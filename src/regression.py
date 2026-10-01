@@ -5,7 +5,8 @@ Ehab Fakhralden Mohamed Hamid (25/27950).
 
 The section does not use a library regression estimator. Feature means and
 standard deviations are computed on the training rows only. The fixed seed is
-stored in the metrics file.
+stored in the metrics file. The loss and the update are derived in
+notes/regression_derivation.md.
 """
 
 from __future__ import annotations
