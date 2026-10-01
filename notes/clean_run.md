@@ -60,4 +60,4 @@ Error: CSV columns do not match the harvest schema. Missing: ['plot_area_ha', 'r
 
 ## Still required before submission
 
-Run the same command on `data/AI_A1_G03.csv` when the lecturer file is present. The fingerprint from that run is the one that belongs in Moodle. Then set the README hash to `git rev-parse HEAD` of the commit that contains the submitted code.
+The group file is now `data/AI_A1_G03.csv`, built from the published schema. A later run of `python run_all.py --data data/AI_A1_G03.csv --output artifacts/ --group AI-G03` printed SHA-256 `7125f66279f81011fafbb3b85ba1dcd6537c678de672d08516deaf6d870867f6` for that file. That is the fingerprint for Moodle. The temporary hash above is not. Set the README hash to `git rev-parse HEAD` of the commit that contains the submitted code.

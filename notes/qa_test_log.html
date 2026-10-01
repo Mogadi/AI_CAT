@@ -121,15 +121,15 @@
 <section class="page">
   <p class="kicker">Page 3 · Limits of this log</p>
   <h1>What this run does not prove</h1>
-  <p>The 26 tests passed on synthetic and temporary files. The assessor’s command is a different check, and it cannot be run in this repository yet.</p>
+  <p>The 26 tests passed on temporary tables. The group file <code>data/AI_A1_G03.csv</code> was then created from the published schema and the command was run on it.</p>
   <table>
     <thead><tr><th>Assessor check</th><th>Status on 1 October 2026</th></tr></thead>
     <tbody>
-      <tr><td>Clean install from requirements.txt</td><td>Blocked. requirements.txt is not in the project yet.</td></tr>
-      <tr><td><code>python run_all.py --data data/AI_A1_G03.csv --output artifacts/ --group AI-G03</code></td><td>Blocked. run_all.py and the lecturer CSV are not in the project yet.</td></tr>
-      <tr><td>Hidden CSV with the same columns</td><td>Not run. No issued file is available to copy the schema from.</td></tr>
+      <tr><td>Clean install from requirements.txt</td><td>Done. Recorded in notes/clean_run.md on Python 3.14.6.</td></tr>
+      <tr><td><code>python run_all.py --data data/AI_A1_G03.csv --output artifacts/ --group AI-G03</code></td><td>Done. Group code AI-G03. SHA-256 7125f66279f81011fafbb3b85ba1dcd6537c678de672d08516deaf6d870867f6. 60 rows.</td></tr>
+      <tr><td>Hidden CSV with the same columns</td><td>Not run. That file stays with the assessor. The pipeline reads whatever path it is given.</td></tr>
       <tr><td>predict.py with one valid record and one malformed record</td><td>Blocked. predict.py is not in the project yet.</td></tr>
-      <tr><td>Artifacts produced by the command, not written by hand</td><td>The unit tests write JSON and PNG only inside a temporary folder, then delete that folder.</td></tr>
+      <tr><td>Artifacts produced by the command, not written by hand</td><td>The group run wrote the JSON, PNG, and CSV files in artifacts/ and the three model files in models/.</td></tr>
     </tbody>
   </table>
   <h2>QA note for the later full run</h2>
@@ -139,7 +139,7 @@
     <li>Regression loss and test predictions must be finite. Classification metrics and the confusion matrix must be recomputed. Clustering must show a score for every k from 2 to 5 and a label on every input record.</li>
     <li>A malformed predict.py record must return a clear validation error and no result JSON.</li>
   </ul>
-  <p><strong>Member 4 evidence.</strong> Mohammed Osama Hasan owns this log and <code>src/clustering.py</code>. Export this file as <code>evidence/TEST_LOG.pdf</code>. Run the same unittest command again after run_all.py exists, and add that result to a new entry in this log.</p>
+  <p><strong>Member 4 evidence.</strong> Mohammed Osama Hasan owns this log and <code>src/clustering.py</code>. Export this file as <code>evidence/TEST_LOG.pdf</code>. The group code is AI-G03.</p>
   <div class="footer"><span>TEST_LOG · AI-G03 · Member 4</span><span>3 of 3</span></div>
 </section>
 

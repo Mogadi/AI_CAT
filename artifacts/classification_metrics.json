@@ -1,0 +1,154 @@
+{
+  "group_code": "AI-G03",
+  "model_version": "sklearn-logreg-1",
+  "random_seed": 42,
+  "test_size": 0.2,
+  "stratified": true,
+  "positive_class": 1,
+  "classifier": "logistic_regression",
+  "C": 1.0,
+  "max_iter": 500,
+  "n_train": 48,
+  "n_test": 12,
+  "feature_names": [
+    "plot_area_ha",
+    "rainfall_mm",
+    "soil_ph",
+    "seed_kg",
+    "distance_km",
+    "arrival_hour"
+  ],
+  "scaling": {
+    "method": "standardize",
+    "fit_on": "training_features_only",
+    "mean": [
+      1.5589583333333332,
+      105.25208333333335,
+      6.032083333333333,
+      239.14583333333334,
+      16.631249999999998,
+      11.083333333333334
+    ],
+    "scale": [
+      0.7010742934458198,
+      35.17941508410454,
+      0.6003747383000794,
+      74.3837850787313,
+      9.128507459464554,
+      3.621885635350122
+    ]
+  },
+  "coefficients": {
+    "intercept": 0.6247827294281693,
+    "coefficients": [
+      0.4293766385690662,
+      -0.7660294507664729,
+      -0.4926807895558498,
+      0.167846156224825,
+      2.237624588280653,
+      0.4478369241930127
+    ]
+  },
+  "train_metrics": {
+    "accuracy": 0.9375,
+    "precision": 0.9285714285714286,
+    "recall": 0.9629629629629629,
+    "f1": 0.9454545454545454
+  },
+  "test_metrics": {
+    "accuracy": 0.5833333333333334,
+    "precision": 0.6666666666666666,
+    "recall": 0.5714285714285714,
+    "f1": 0.6153846153846154
+  },
+  "confusion_matrix": {
+    "labels": [
+      0,
+      1
+    ],
+    "matrix": [
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ]
+  },
+  "test_predictions": [
+    {
+      "record_id": "MZ03-028",
+      "actual_dispatch_attention": 0,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.5024654705281427
+    },
+    {
+      "record_id": "MZ03-050",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.4619617376797707
+    },
+    {
+      "record_id": "MZ03-045",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.9608125886696519
+    },
+    {
+      "record_id": "MZ03-047",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.8272944577091909
+    },
+    {
+      "record_id": "MZ03-060",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.371174835564669
+    },
+    {
+      "record_id": "MZ03-037",
+      "actual_dispatch_attention": 0,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.6715958046307409
+    },
+    {
+      "record_id": "MZ03-025",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.44617320467214927
+    },
+    {
+      "record_id": "MZ03-017",
+      "actual_dispatch_attention": 0,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.27535907323045006
+    },
+    {
+      "record_id": "MZ03-034",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.7326326256248545
+    },
+    {
+      "record_id": "MZ03-011",
+      "actual_dispatch_attention": 0,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.09000327400562425
+    },
+    {
+      "record_id": "MZ03-042",
+      "actual_dispatch_attention": 1,
+      "predicted_dispatch_attention": 1,
+      "probability_attention": 0.9981976984315837
+    },
+    {
+      "record_id": "MZ03-012",
+      "actual_dispatch_attention": 0,
+      "predicted_dispatch_attention": 0,
+      "probability_attention": 0.2642014128195393
+    }
+  ]
+}

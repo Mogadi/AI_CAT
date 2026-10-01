@@ -29,7 +29,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-Place the lecturer CSV at `data/AI_A1_G03.csv`. Do not rename its columns.
+The group file is `data/AI_A1_G03.csv`. It uses the nine columns from the published schema. Do not rename those columns.
 
 ## Run
 
@@ -62,7 +62,7 @@ A CSV with the wrong columns stops before those files are treated as results. Th
 
 ## Known limitations
 
-- The lecturer CSV is not in this repository. The clean-run record used a temporary file with the same columns, then deleted it.
+- `data/AI_A1_G03.csv` is the fictional group 03 file built from the published schema. Its SHA-256 from `run_all.py` is `7125f66279f81011fafbb3b85ba1dcd6537c678de672d08516deaf6d870867f6`.
 - `predict.py` is not in this release.
 - The staff dashboard is the design in `design/AI_A1_G03_UIUX.pdf`. This command does not open a window.
 - Cluster labels group similar input measurements. They are not a verified real-world category.

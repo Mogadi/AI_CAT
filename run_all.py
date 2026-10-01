@@ -5,7 +5,7 @@ Lazarus Simboya Ira Inyasio (25/28180).
 
 The documented command is:
 
-python run_all.py --data data/AI_A1_GXX.csv --output artifacts/ --group AI-GXX
+python run_all.py --data data/AI_A1_G03.csv --output artifacts/ --group AI-G03
 
 Setup, members, and the clean-run record are in README.md and notes/clean_run.md.
 """

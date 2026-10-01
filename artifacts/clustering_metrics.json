@@ -1,0 +1,52 @@
+{
+  "group_code": "AI-G03",
+  "model_version": "sklearn-kmeans-1",
+  "random_seed": 42,
+  "row_count": 60,
+  "feature_count": 6,
+  "feature_names": [
+    "plot_area_ha",
+    "rainfall_mm",
+    "soil_ph",
+    "seed_kg",
+    "distance_km",
+    "arrival_hour"
+  ],
+  "scaling": {
+    "method": "standardize",
+    "fit_on": "all_clustered_input_rows",
+    "mean": [
+      1.5899999999999999,
+      101.66499999999998,
+      6.0295000000000005,
+      229.16166666666666,
+      16.368333333333332,
+      11.0
+    ],
+    "scale": [
+      0.7246654400480266,
+      35.886036397648226,
+      0.576597563296967,
+      75.75312995000418,
+      8.915501325718532,
+      3.5777087639996634
+    ]
+  },
+  "k_selection": {
+    "candidates": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "silhouette_scores": {
+      "2": 0.15877360567852997,
+      "3": 0.16429421772549108,
+      "4": 0.15678664440966775,
+      "5": 0.1589928588473056
+    },
+    "selected_k": 3,
+    "rule": "highest silhouette score; the smaller k wins a tie"
+  },
+  "interpretation": "Labels group similar input measurements. A cluster is not a verified real-world category."
+}
