@@ -5,7 +5,8 @@ Mojtaba Abdalitieef Ahmed (25/27660).
 
 The target is the attention label. The six farm measures are the only inputs.
 record_id and actual_yield_kg are never features. The scaler is fit on the
-training rows only, and the seed is stored in the metrics file.
+training rows only, and the seed is stored in the metrics file. Which error
+costs more is explained in notes/classification_error_cost.md.
 """
 
 from __future__ import annotations
