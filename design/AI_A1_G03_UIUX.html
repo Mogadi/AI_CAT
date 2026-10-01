@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI_A1_G03_UIUX — HarvestLink Dispatch Desk</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Calibri, sans-serif;
+    color: #1A1A1A;
+    background: #fff;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 11mm 12mm 12mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: #fff;
+  }
+  .kicker {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #243B53;
+    font-weight: 700;
+    margin: 0 0 2px;
+  }
+  h1 { font-size: 20px; line-height: 1.15; margin: 0 0 4px; color: #1A1A1A; }
+  h2 { font-size: 13px; margin: 8px 0 3px; color: #243B53; }
+  p { margin: 0 0 5px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 6px; }
+  th, td { border: 1px solid #D6D1C7; padding: 3px 5px; text-align: left; vertical-align: top; }
+  th { background: #243B53; color: #fff; font-weight: 650; font-size: 10px; }
+  td { font-size: 10px; }
+  .note { color: #5C574E; font-size: 10px; }
+  .footer {
+    position: absolute;
+    left: 12mm;
+    right: 12mm;
+    bottom: 6mm;
+    border-top: 1px solid #D6D1C7;
+    padding-top: 3px;
+    font-size: 9px;
+    color: #5C574E;
+    display: flex;
+    justify-content: space-between;
+  }
+  ol, ul { margin: 2px 0 6px; padding-left: 16px; }
+  li { margin: 0 0 2px; }
+  .flow { display: flex; gap: 4px; margin: 4px 0 6px; }
+  .flow div {
+    flex: 1;
+    background: #F6F3EC;
+    border: 1px solid #D6D1C7;
+    border-radius: 6px;
+    padding: 4px 5px;
+    font-size: 9.5px;
+  }
+  .flow strong { display: block; color: #243B53; font-size: 10px; }
+  .pair { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 8px; margin-bottom: 6px; }
+  .screen {
+    background: #F6F3EC;
+    border: 1px solid #D6D1C7;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .bar {
+    background: #243B53;
+    color: #fff;
+    padding: 6px 8px 5px;
+  }
+  .bar .title { font-size: 12px; font-weight: 700; }
+  .bar .code { font-size: 9px; letter-spacing: 0.04em; opacity: 0.95; }
+  .body { padding: 7px 8px 8px; background: #F6F3EC; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 5px; }
+  .tile { background: #fff; border-radius: 6px; padding: 4px 5px; border: 1px solid #E4DFD4; }
+  .tile span { display: block; color: #5C574E; font-size: 8px; }
+  .tile b { font-size: 12px; }
+  .chip {
+    display: inline-block;
+    border-radius: 99px;
+    padding: 1px 7px;
+    font-size: 9px;
+    font-weight: 700;
+    border: 1px solid transparent;
+  }
+  .ready { color: #1B6B3A; background: #E5F2E8; border-color: #1B6B3A; }
+  .hold { color: #9B2335; background: #F8E8EB; border-color: #9B2335; }
+  .unsure { color: #8A5A00; background: #F8F1DE; border-color: #8A5A00; }
+  .btn {
+    display: inline-block;
+    min-height: 22px;
+    line-height: 20px;
+    padding: 0 8px;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .primary { background: #243B53; color: #fff; }
+  .secondary { background: #fff; color: #243B53; border: 1px solid #243B53; }
+  .ghost { background: #fff; color: #9B2335; border: 1px solid #9B2335; }
+  .dl { width: 100%; border: 0; margin: 0; }
+  .dl td { border: 0; border-bottom: 1px solid #E4DFD4; background: #fff; padding: 2px 4px; font-size: 9.5px; }
+  .big {
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin: 4px 0;
+  }
+  .big em { font-style: normal; font-size: 18px; font-weight: 700; }
+  .sample { color: #8A5A00; font-size: 8px; font-weight: 700; letter-spacing: 0.04em; }
+  .warnbox {
+    background: #fff;
+    border-left: 4px solid #9B2335;
+    padding: 5px 7px;
+    margin: 4px 0;
+    font-size: 10px;
+  }
+  .limit {
+    background: #fff;
+    border-left: 4px solid #8A5A00;
+    padding: 5px 7px;
+    margin: 4px 0;
+    font-size: 10px;
+  }
+  .legend { display: flex; gap: 8px; font-size: 9px; margin: 4px 0; }
+  .legend span { display: inline-flex; align-items: center; gap: 3px; }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 4px 0 6px; }
+  .swatch { border: 1px solid #D6D1C7; border-radius: 6px; overflow: hidden; }
+  .swatch i { display: block; height: 22px; }
+  .swatch p { margin: 0; padding: 3px 5px 4px; font-size: 9px; background: #fff; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card {
+    background: #F6F3EC;
+    border-radius: 6px;
+    padding: 6px 7px;
+    margin-bottom: 5px;
+  }
+  .card h3 { margin: 0 0 2px; font-size: 11px; color: #243B53; }
+  .card p { margin: 0; font-size: 10px; }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <p class="kicker">INES-Ruhengeri · SWE 3513 · Assignment 1 · UI and UX design</p>
+  <h1>HarvestLink Dispatch Desk</h1>
+  <p>Musanze Cooperative Harvest and Dispatch Decision Lab. A proposed staff dashboard. This document does not implement the screen. It shows how a dispatch officer reads the pipeline and decides.</p>
+  <p><strong>Group code AI-G03.</strong> The same code is printed in the dashboard header and on every result.</p>
+
+  <h2>1. Cover, people, and the operational problem</h2>
+  <table>
+    <thead>
+      <tr><th>Role</th><th>Name</th><th>Registration</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Member 1 — Data and UX lead</td><td>Nuzha ZainEl-Abdeen Mohammed Ismail</td><td>25/27419</td></tr>
+      <tr><td>Member 2 — Regression engineer</td><td>Ehab Fakhralden Mohamed Hamid</td><td>25/27950</td></tr>
+      <tr><td>Member 3 — Classification engineer</td><td>Mojtaba Abdalitieef Ahmed</td><td>25/27660</td></tr>
+      <tr><td>Member 4 — Clustering and QA engineer. Group leader.</td><td>Mohammed Osama Hasan</td><td>25/27014</td></tr>
+      <tr><td>Member 5 — Reproducibility and release lead</td><td>Lazarus Simboya Ira Inyasio</td><td>25/28180</td></tr>
+      <tr><td>Prediction and demonstration lead</td><td>Feras Saifaddin Ismail Mohammed</td><td>25/27916</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Stakeholder.</strong> The dispatch officer at Musanze HarvestLink Cooperative. The officer is not a modeller. The work happens at a collection desk, sometimes with strong window light, on a laptop. The next action has to be readable without interpreting a chart legend first.</p>
+  <p><strong>Problem.</strong> Before a potato consignment leaves, the officer needs three answers from the issued batch, then a human decision. The model proposes. The officer dispatches, holds, or overrides.</p>
+  <ol>
+    <li><strong>Expected harvest weight.</strong> An estimate in kilograms from the six farm measures. It is not a scale reading.</li>
+    <li><strong>Dispatch attention.</strong> Whether this consignment should be held for a look before it leaves.</li>
+    <li><strong>Operating profile.</strong> Which other collection rows look similar on those same measures. A profile is not a verified farm type.</li>
+  </ol>
+  <p><strong>What Member 1 owns.</strong> The schema check, the feature matrix, <span class="note">data_report.json</span>, and this dashboard. The matrix uses plot area, rainfall, soil pH, seed, distance, and arrival hour. <span class="note">record_id</span> stays a label. <span class="note">actual_yield_kg</span> and <span class="note">dispatch_attention</span> stay targets and are not inputs. Pages 2 to 7 are the owned design. Later members fill the numbers the screens reserve.</p>
+  <h2>Where each required part sits</h2>
+  <table>
+    <thead><tr><th>Page</th><th>What the assessor can check</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>The path from CSV upload to review, prediction, and the officer’s decision</td></tr>
+      <tr><td>3</td><td>Data-quality gate, batch list, and expected weight</td></tr>
+      <tr><td>4</td><td>Dispatch warning and the profile plot</td></tr>
+      <tr><td>5</td><td>Uncertainty, missing data, model limitation, and human override</td></tr>
+      <tr><td>6</td><td>Accessible colours, type, labels, and legends</td></tr>
+      <tr><td>7</td><td>Three justified design decisions</td></tr>
+    </tbody>
+  </table>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>1 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 2 · User journey and information flow</p>
+  <h1>From the CSV to a human decision</h1>
+  <p><strong>Primary user.</strong> Dispatch officer on the HarvestLink desk.</p>
+  <p><strong>Goal.</strong> Confirm the file, read the three results for a consignment, and record Dispatch, Hold, or Override.</p>
+  <p><strong>Constraint.</strong> Figures come from the pipeline for group AI-G03. The officer cannot rename columns or type over a result. A failed file check shows no weight, warning, or profile.</p>
+
+  <div class="flow">
+    <div><strong>1. Upload</strong>Officer chooses the issued CSV. The header already shows AI-G03.</div>
+    <div><strong>2. File check</strong>Fingerprint, row count, missing cells, duplicate ids.</div>
+    <div><strong>3. Results</strong>Expected kg, attention word, and profile for each complete row.</div>
+    <div><strong>4. One row</strong>The officer opens a consignment and reads all three together.</div>
+    <div><strong>5. Decide</strong>Dispatch, Hold, or Override with the model still visible.</div>
+  </div>
+
+  <h2>Happy path</h2>
+  <ol>
+    <li>Open the desk. Read AI-G03 in the header.</li>
+    <li>Upload the group CSV. The screen shows the SHA-256 of those exact bytes and the file name.</li>
+    <li>Read the file check. Six features are named in words. Missing cells and duplicate ids are counts, not colours alone.</li>
+    <li>Open the batch. Each complete row has an expected weight, an attention word, and a profile word.</li>
+    <li>Open one consignment. The six measures are listed beside the three results and the model version.</li>
+    <li>Record the decision. Dispatch and Hold need one click. Override needs a written reason. The result stays on the record.</li>
+  </ol>
+
+  <h2>Paths the officer will actually hit</h2>
+  <ul>
+    <li><strong>Wrong table.</strong> A missing or extra column stops the desk. The message names the columns. No results are drawn.</li>
+    <li><strong>Empty cell.</strong> That row is listed as incomplete and has no weight, flag, or profile. Complete rows remain reviewable.</li>
+    <li><strong>Repeated record id or repeated row.</strong> The count is shown on the file check. Both copies stay visible so the officer can compare them.</li>
+    <li><strong>Bad attention label.</strong> A value other than 0 or 1 stops the file check and names the field.</li>
+    <li><strong>Single-record form.</strong> A missing or non-numeric measure blocks prediction and names the field. The other fields stay filled.</li>
+    <li><strong>Close call.</strong> When the attention score sits between 40 and 60 in 100, the chip reads Uncertain. Hold remains the filled button.</li>
+  </ul>
+
+  <h2>What moves between steps</h2>
+  <table>
+    <thead><tr><th>Step</th><th>Officer sees</th><th>Comes from</th></tr></thead>
+    <tbody>
+      <tr><td>File check</td><td>Group code, fingerprint, row count, feature count, missing values, duplicate counts, complete and incomplete counts</td><td>data_report.json</td></tr>
+      <tr><td>Batch and detail</td><td>Expected kilograms, attention word plus score, profile word, model version</td><td>Regression, classification, and clustering outputs</td></tr>
+      <tr><td>One new record</td><td>The six measures in, and the same three results out. A bad field returns a validation message and no JSON result.</td><td>predict.py</td></tr>
+      <tr><td>Decision</td><td>Dispatch, Hold, or Override, plus reason when overriding</td><td>The officer. Never the model alone.</td></tr>
+    </tbody>
+  </table>
+  <h2>What stays off the decision</h2>
+  <table>
+    <thead><tr><th>Field</th><th>How the desk treats it</th></tr></thead>
+    <tbody>
+      <tr><td>record_id</td><td>Shown as Identifier. It is never a measure in the estimate, the warning, or the profile.</td></tr>
+      <tr><td>actual_yield_kg</td><td>Used to teach the weight model. The desk shows the estimate, not a box for editing the past weight.</td></tr>
+      <tr><td>dispatch_attention</td><td>Past labels stay inside the file. The officer acts on the new warning and does not retype 0 or 1.</td></tr>
+      <tr><td>Fingerprint</td><td>Shown in full on the file check so this batch can be matched to the issued file.</td></tr>
+    </tbody>
+  </table>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>2 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 3 · Annotated wireframes</p>
+  <h1>File check and expected weight</h1>
+  <p class="note">Figures marked Sample are layout only. The running pipeline replaces them. The fingerprint is calculated from the uploaded file and is never a fixed string in the design.</p>
+
+  <div class="pair">
+    <div class="screen">
+      <div class="bar"><div class="title">HarvestLink Dispatch Desk</div><div class="code">AI-G03</div></div>
+      <div class="body">
+        <p style="margin:0 0 4px;font-size:10px;">File check · AI_A1_G03.csv</p>
+        <div class="tiles">
+          <div class="tile"><span>Rows</span><b>Sample</b></div>
+          <div class="tile"><span>Features</span><b>6</b></div>
+          <div class="tile"><span>Incomplete</span><b>Sample</b></div>
+          <div class="tile"><span>Duplicate ids</span><b>Sample</b></div>
+        </div>
+        <table class="dl">
+          <tr><td>Fingerprint</td><td>64 hex characters from this file</td></tr>
+          <tr><td>Missing cells</td><td>Count beside each column name</td></tr>
+          <tr><td>Duplicate rows</td><td>Count, with both copies kept</td></tr>
+          <tr><td>Column check</td><td><span class="chip ready">Passed</span></td></tr>
+        </table>
+        <p style="margin:6px 0 0;"><span class="btn primary">Review results</span></p>
+      </div>
+    </div>
+    <div>
+      <p><strong>File check.</strong> This is the gate. Review results stays unavailable until the column names and the attention labels pass.</p>
+      <p>The six features are written as plot area, rainfall, soil pH, seed, distance, and arrival hour. The record id is labelled Identifier, not a measure.</p>
+      <p>Column statistics stay behind “Show statistics”. The officer’s first task is to trust the file, not to read a quartile table.</p>
+      <p class="note">A failed check replaces this body with the column message on page 5. The button is not merely greyed out.</p>
+    </div>
+  </div>
+
+  <div class="pair">
+    <div class="screen">
+      <div class="bar"><div class="title">Consignment</div><div class="code">AI-G03 · model version on the record</div></div>
+      <div class="body">
+        <p style="margin:0;font-size:10px;">Identifier <b>Sample-014</b></p>
+        <table class="dl">
+          <tr><td>Plot area</td><td>1.2 ha</td></tr>
+          <tr><td>Rainfall</td><td>81 mm</td></tr>
+          <tr><td>Soil pH</td><td>5.7</td></tr>
+          <tr><td>Seed</td><td>210 kg</td></tr>
+          <tr><td>Distance</td><td>14 km</td></tr>
+          <tr><td>Arrival hour</td><td>09:00</td></tr>
+        </table>
+        <div class="big">
+          <span class="sample">SAMPLE</span><br>
+          Expected harvest weight<br>
+          <em>— kg</em>
+          <p style="margin:2px 0 0;">Estimate from the six measures above. Not a scale reading.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p><strong>Expected weight.</strong> The number is the regression prediction for this row. The unit kg is written beside it.</p>
+      <p>The six measures above the weight are the inputs. Past measured yield is not shown as something to edit. It was used to teach the estimate.</p>
+      <p>Under the number, a second line can show the typical miss from the held-out check, in kilograms, once that metric exists. The line is absent until the file is real.</p>
+      <p class="note">The example measures match the single-record shape in the brief: 1.2 ha, 81 mm, pH 5.7, 210 kg seed, 14 km, hour 9.</p>
+    </div>
+  </div>
+  <p style="margin:2px 0 3px;"><strong>Batch the officer scans before opening one row.</strong> Incomplete rows stay in the list and cannot be chosen for dispatch.</p>
+  <table>
+    <thead><tr><th>Identifier</th><th>Expected kg</th><th>Attention</th><th>Profile</th><th>Next step</th></tr></thead>
+    <tbody>
+      <tr><td>Sample-014</td><td>Filled by the model</td><td>Hold</td><td>Profile 2</td><td>Open</td></tr>
+      <tr><td>Sample-015</td><td>Filled by the model</td><td>Ready</td><td>Profile 1</td><td>Open</td></tr>
+      <tr><td>Sample-016</td><td>No result</td><td>Incomplete</td><td>No profile</td><td>Blocked</td></tr>
+    </tbody>
+  </table>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>3 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 4 · Annotated wireframes</p>
+  <h1>Dispatch warning and profiles</h1>
+
+  <div class="pair">
+    <div class="screen">
+      <div class="bar"><div class="title">Dispatch attention</div><div class="code">AI-G03</div></div>
+      <div class="body">
+        <p style="margin:0 0 4px;"><span class="chip hold">Hold</span> <span class="sample">SAMPLE SCORE</span></p>
+        <div class="warnbox">This consignment needs a look before it leaves. The score is a sample layout, written both as words and as a count out of 100.</div>
+        <p style="font-size:10px;">Sending a load that needed a check is harder to undo than holding a load that was ready. Hold stays available either way.</p>
+        <p style="margin:6px 0 0;">
+          <span class="btn primary">Hold</span>
+          <span class="btn secondary">Dispatch anyway</span>
+          <span class="btn ghost">Override</span>
+        </p>
+      </div>
+    </div>
+    <div>
+      <p><strong>Attention warning.</strong> The chip always contains the word Hold, Ready, or Uncertain. Colour repeats the word. It does not replace it.</p>
+      <p>The score from the classifier is shown as “n in 100” and as a sentence, for example “Hold is more likely than Ready.”</p>
+      <p>On a Hold or Uncertain row the filled button is Hold. Dispatch anyway is an outline. Override asks for a reason on the next step and does not clear the warning.</p>
+    </div>
+  </div>
+
+  <div class="pair">
+    <div class="screen">
+      <div class="bar"><div class="title">Operating profiles</div><div class="code">AI-G03 · k chosen from 2 to 5</div></div>
+      <div class="body">
+        <div class="limit">Profile groups similar measurements. A profile is not a verified farm type.</div>
+        <svg viewBox="0 0 280 78" width="100%" height="72" role="img" aria-label="Sample profile plot with three shapes">
+          <line x1="18" y1="6" x2="18" y2="66" stroke="#5C574E" stroke-width="1"/>
+          <line x1="18" y1="66" x2="268" y2="66" stroke="#5C574E" stroke-width="1"/>
+          <circle cx="58" cy="24" r="4" fill="none" stroke="#243B53" stroke-width="1.7"/>
+          <circle cx="74" cy="32" r="4" fill="none" stroke="#243B53" stroke-width="1.7"/>
+          <circle cx="66" cy="18" r="4" fill="none" stroke="#243B53" stroke-width="1.7"/>
+          <rect x="132" y="40" width="8" height="8" fill="none" stroke="#C45C26" stroke-width="1.7"/>
+          <rect x="148" y="46" width="8" height="8" fill="none" stroke="#C45C26" stroke-width="1.7"/>
+          <rect x="140" y="34" width="8" height="8" fill="none" stroke="#C45C26" stroke-width="1.7"/>
+          <path d="M210 22 L216 34 L204 34 Z" fill="none" stroke="#1B6B3A" stroke-width="1.5"/>
+          <path d="M228 16 L234 28 L222 28 Z" fill="none" stroke="#1B6B3A" stroke-width="1.5"/>
+          <path d="M236 30 L242 42 L230 42 Z" fill="none" stroke="#1B6B3A" stroke-width="1.5"/>
+        </svg>
+        <div class="legend">
+          <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#243B53" stroke-width="2"/></svg> Profile 1</span>
+          <span><svg width="12" height="12" aria-hidden="true"><rect x="2" y="2" width="8" height="8" fill="none" stroke="#C45C26" stroke-width="2"/></svg> Profile 2</span>
+          <span><svg width="12" height="12" aria-hidden="true"><path d="M6 1.5 L11 10.5 L1 10.5 Z" fill="none" stroke="#1B6B3A" stroke-width="1.6"/></svg> Profile 3</span>
+        </div>
+        <table class="dl">
+          <tr><td>This row</td><td><b>Profile 2</b> · square on the plot</td></tr>
+          <tr><td>Why this k</td><td>Silhouette comparison for k = 2, 3, 4 and 5. The winning k is named in a sentence.</td></tr>
+          <tr><td>Plot</td><td>Every complete record is one mark. The legend stays beside the plot.</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <p><strong>Profiles.</strong> Labels are Profile 1, Profile 2, and so on, up to the selected k. This drawing shows three marks only as a layout sample.</p>
+      <p>Each profile has a shape and a colour. The shape remains if the colour washes out. The table repeats the profile in words.</p>
+      <p>The screen does not rename a profile “good farms” or “problem farms”. A short measure summary may say which inputs sit higher than the batch, and that sentence stays descriptive.</p>
+      <p class="note">Incomplete rows appear in a list under the plot and have no profile mark.</p>
+    </div>
+  </div>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>4 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 5 · Responsible AI states</p>
+  <h1>Uncertainty, gaps, limits, and override</h1>
+  <p>These four states are part of the desk. A result screen without them is incomplete.</p>
+
+  <div class="cols">
+    <div class="card">
+      <h3>Uncertainty</h3>
+      <p><span class="chip unsure">Uncertain</span></p>
+      <p>When the attention score is from 40 to 60 in 100, the chip reads Uncertain even if the model leans one way. The sentence says the two outcomes are too close. Hold is the filled button. The score remains visible as a count out of 100.</p>
+    </div>
+    <div class="card">
+      <h3>Missing data</h3>
+      <p><span class="chip hold">Stopped</span></p>
+      <p>File: “Rainfall is missing on 2 rows. Those rows have no weight, warning, or profile.” Single record: “Rainfall must be a number. Nothing was predicted.” The named field is the only one cleared of its error when the officer fixes it.</p>
+    </div>
+    <div class="card">
+      <h3>Model limitation</h3>
+      <p>A standing note sits under every result. “This estimate uses six measures from the group file. It does not know the road, the sacks, or today’s queue. A profile is not a farm type.” The note stays when the numbers look confident.</p>
+    </div>
+    <div class="card">
+      <h3>Human override</h3>
+      <p>Override opens a reason box: “Why are you overriding the suggestion?” Save stays unavailable until the reason has a short sentence. The stored record keeps the model weight, the attention word, the profile, the model version, AI-G03, the officer’s decision, and the reason.</p>
+    </div>
+  </div>
+
+  <h2>Stopped file</h2>
+  <div class="screen">
+    <div class="bar"><div class="title">HarvestLink Dispatch Desk</div><div class="code">AI-G03</div></div>
+    <div class="body">
+      <div class="warnbox">This file does not match the harvest table. Missing columns and unexpected columns are listed by name. No weight, warning, or profile was calculated.</div>
+      <p style="margin:0;"><span class="btn secondary">Choose another file</span></p>
+    </div>
+  </div>
+
+  <h2>Override, with the suggestion kept</h2>
+  <div class="screen">
+    <div class="bar"><div class="title">Your decision</div><div class="code">AI-G03 · suggestion still Hold</div></div>
+    <div class="body">
+      <p style="margin:0 0 4px;font-size:10px;">Model suggestion <span class="chip hold">Hold</span> stays on this record.</p>
+      <table class="dl">
+        <tr><td>Reason</td><td>Why are you overriding the suggestion?</td></tr>
+        <tr><td>Decision</td><td>Dispatch · attributed to the officer, not the model</td></tr>
+      </table>
+      <p style="margin:6px 0 0;"><span class="btn primary">Save decision</span> <span class="btn secondary">Back</span></p>
+    </div>
+  </div>
+  <p class="note">Back returns to the consignment without saving. The batch list is unchanged.</p>
+  <h2>Single record the officer types</h2>
+  <div class="screen">
+    <div class="bar"><div class="title">Check one consignment</div><div class="code">AI-G03</div></div>
+    <div class="body">
+      <table class="dl">
+        <tr><td>Rainfall</td><td>Rainfall must be a number. Nothing was predicted.</td></tr>
+        <tr><td>Other five measures</td><td>Stay as the officer typed them.</td></tr>
+      </table>
+      <p style="margin:6px 0 0;"><span class="btn primary">Predict</span> <span class="btn secondary">Clear</span></p>
+    </div>
+  </div>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>5 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 6 · Visual system</p>
+  <h1>Colour, type, and legends</h1>
+  <p>The desk uses dark ink on warm paper so the text still reads in window light. Colour supports a word. It never replaces the word.</p>
+  <div class="swatches">
+    <div class="swatch"><i style="background:#243B53"></i><p><b>Primary</b><br>#243B53<br>Header and filled button. White label.</p></div>
+    <div class="swatch"><i style="background:#F6F3EC"></i><p><b>Paper</b><br>#F6F3EC<br>Screen background.</p></div>
+    <div class="swatch"><i style="background:#FFFFFF;border-bottom:1px solid #E4DFD4"></i><p><b>Surface</b><br>#FFFFFF<br>Cards and fields.</p></div>
+    <div class="swatch"><i style="background:#1A1A1A"></i><p><b>Ink</b><br>#1A1A1A<br>Body text.</p></div>
+    <div class="swatch"><i style="background:#5C574E"></i><p><b>Muted</b><br>#5C574E<br>Labels and footnotes.</p></div>
+    <div class="swatch"><i style="background:#1B6B3A"></i><p><b>Ready</b><br>#1B6B3A<br>Always with the word Ready.</p></div>
+    <div class="swatch"><i style="background:#8A5A00"></i><p><b>Uncertain</b><br>#8A5A00<br>Always with the word Uncertain.</p></div>
+    <div class="swatch"><i style="background:#9B2335"></i><p><b>Hold / stop</b><br>#9B2335<br>Always with Hold or the error words.</p></div>
+  </div>
+
+  <h2>Type</h2>
+  <p>The desk uses the system font so browser zoom can enlarge it. Text wraps. Chips grow with their words instead of clipping.</p>
+  <table>
+    <thead><tr><th>Role</th><th>Size</th><th>Weight</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Screen title</td><td>22</td><td>700</td><td>Desk name, consignment title</td></tr>
+      <tr><td>Result figure</td><td>28</td><td>700</td><td>Expected kilograms only</td></tr>
+      <tr><td>Body</td><td>16</td><td>400</td><td>Sentences, field values, reasons</td></tr>
+      <tr><td>Meta</td><td>14</td><td>400</td><td>Group code, fingerprint, model version</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Legend and status rules</h2>
+  <ul>
+    <li>Attention chips: Ready, Hold, Uncertain. Each has a word, a border, and a fill.</li>
+    <li>Profile marks: circle, square, triangle, diamond, and a cross if k is 5. The legend lists Profile plus the number. The plot and the table use the same pair.</li>
+    <li>One filled button per decision row. Hold is filled when the chip is Hold or Uncertain. On a Ready row, Dispatch can be the filled button, and Hold stays one click away.</li>
+    <li>Buttons are at least 48 by 48. Gap between two buttons is 8. Screen padding is 16. Cards use 8 px corners.</li>
+    <li>Error text uses Hold red and the sentence. A red border without words is not a message.</li>
+  </ul>
+  <h2>Contrast pairs the desk relies on</h2>
+  <table>
+    <thead><tr><th>Ink on surface</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>#1A1A1A on #FFFFFF and on #F6F3EC</td><td>Body text and field values</td></tr>
+      <tr><td>#FFFFFF on #243B53</td><td>Header title, group code, and the filled button</td></tr>
+      <tr><td>#9B2335 on #FFFFFF, with the words of the message</td><td>Stop, Hold, and field errors</td></tr>
+      <tr><td>#5C574E on #FFFFFF</td><td>Footnotes, fingerprint label, model version</td></tr>
+    </tbody>
+  </table>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>6 of 7</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 7 · Three decisions</p>
+  <h1>Why the desk is arranged this way</h1>
+
+  <div class="card">
+    <h3>Decision 1 — The file check is a gate</h3>
+    <p>The officer sees the fingerprint, the column check, the missing cells, and the duplicate counts before any weight. Review results does not open on a failed table. Justified because a later file can keep the column meanings and change the rows, and a familiar file name is not proof. Acting on a weight from the wrong table is the failure this screen is built to prevent.</p>
+  </div>
+  <div class="card">
+    <h3>Decision 2 — Hold is the filled action on a warning</h3>
+    <p>When the chip says Hold or Uncertain, the filled button is Hold. Dispatch anyway is secondary. Override keeps the suggestion on the record and requires a reason. Justified because a load that leaves and later proves it needed a check is harder to recover than a load kept at the desk. The officer can still send it. The model does not send it.</p>
+  </div>
+  <div class="card">
+    <h3>Decision 3 — Profiles stay numbered</h3>
+    <p>Clusters are Profile 1 upward, with a shape and a colour, plus the sentence that a profile is not a verified farm type. The desk does not invent names such as “weak farms”. Justified because the same grouping can mix different causes, k is only the silhouette choice from 2 to 5, and a category name would overclaim what the plot can show.</p>
+  </div>
+
+  <h2>Parts the desk must keep</h2>
+  <table>
+    <thead><tr><th>Part</th><th>Looks like</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Header</td><td>Slate bar, white title, AI-G03 under the title</td><td>On every screen, including errors and override</td></tr>
+      <tr><td>File check</td><td>Four counts, fingerprint row, Passed or Stopped</td><td>Results stay hidden until Passed</td></tr>
+      <tr><td>Weight block</td><td>Kilograms, then the estimate sentence</td><td>Never labelled as a scale reading</td></tr>
+      <tr><td>Attention chip</td><td>Ready, Hold, or Uncertain</td><td>Word plus colour plus score out of 100</td></tr>
+      <tr><td>Profile legend</td><td>Shape, colour, Profile number</td><td>Same mapping on the plot and the row</td></tr>
+      <tr><td>Decision row</td><td>One filled button and two outline buttons</td><td>Override requires a reason</td></tr>
+    </tbody>
+  </table>
+  <h2>Accessibility checks</h2>
+  <ul>
+    <li>Body text stays dark on white and on warm paper. The filled button is white on slate.</li>
+    <li>Every status the officer acts on includes the word Ready, Hold, Uncertain, Passed, Stopped, or Incomplete.</li>
+    <li>The profile plot can still be read from the shape and the number when colour fades.</li>
+    <li>Text uses the system font and wraps. Zoom must not clip a chip or a button label.</li>
+    <li>The main actions are at least 48 by 48, including Hold, Dispatch anyway, Override, and Save decision.</li>
+  </ul>
+  <p><strong>Member 1 evidence.</strong> Nuzha ZainEl-Abdeen Mohammed Ismail owns this design and the data functions in <span class="note">src/data_pipeline.py</span>. Export this file as <span class="note">AI_A1_G03_UIUX.pdf</span>. If the lecturer assigns a group number other than 03, the code in the header and the file name change together.</p>
+  <div class="footer"><span>HarvestLink Dispatch Desk · AI-G03 · Member 1</span><span>7 of 7</span></div>
+</section>
+
+</body>
+</html>
