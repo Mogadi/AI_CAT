@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEST_LOG — AI-G03</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Calibri, sans-serif; color: #1A1A1A; font-size: 11px; line-height: 1.35; }
+  .page { width: 210mm; height: 297mm; padding: 12mm 13mm 14mm; position: relative; overflow: hidden; page-break-after: always; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 13px; margin: 9px 0 4px; color: #243B53; }
+  p { margin: 0 0 6px; }
+  .kicker { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: #243B53; font-weight: 700; margin: 0 0 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; }
+  th, td { border: 1px solid #D6D1C7; padding: 3px 5px; text-align: left; vertical-align: top; font-size: 10px; }
+  th { background: #243B53; color: #fff; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 10px; }
+  .pass { color: #1B6B3A; font-weight: 700; }
+  .block { background: #F6F3EC; border-radius: 6px; padding: 6px 8px; margin: 4px 0 8px; }
+  ul { margin: 2px 0 6px; padding-left: 16px; }
+  li { margin: 0 0 3px; }
+  .footer { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; border-top: 1px solid #D6D1C7; padding-top: 3px; font-size: 9px; color: #5C574E; display: flex; justify-content: space-between; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <p class="kicker">INES-Ruhengeri · SWE 3513 · Assignment 1 · QA test log</p>
+  <h1>Cross-pipeline test log</h1>
+  <p><strong>Group code AI-G03.</strong> Owner: Member 4, Clustering and QA engineer, Mohammed Osama Hasan (25/27014). Checked on 1 October 2026.</p>
+  <p>This log records the checks that can be run now. The tests build temporary tables. They do not use, replace, or stand in for the lecturer CSV.</p>
+
+  <h2>Command and result</h2>
+  <div class="block">
+    <p><code>python -m unittest discover -s tests -v</code></p>
+    <p>Result: <span class="pass">26 tests, OK</span>, in 1.244 seconds. Exit code 0.</p>
+  </div>
+  <table>
+    <thead><tr><th>Module</th><th>Tests</th><th>Result</th><th>What was protected</th></tr></thead>
+    <tbody>
+      <tr><td>Data pipeline</td><td>6</td><td class="pass">OK</td><td>Schema, fingerprint, missing values, feature matrix</td></tr>
+      <tr><td>Regression</td><td>7</td><td class="pass">OK</td><td>NumPy gradient, training-only scaler, seed, loss plot</td></tr>
+      <tr><td>Classification</td><td>6</td><td class="pass">OK</td><td>Stratified split, training-only scaler, confusion matrix</td></tr>
+      <tr><td>Clustering</td><td>7</td><td class="pass">OK</td><td>k from 2 to 5, one label per row, no target inputs</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Leakage checks</h2>
+  <ul>
+    <li><code>record_id</code> stays an identifier. It is not a column of the feature matrix.</li>
+    <li><code>actual_yield_kg</code> is the regression target only. Classification rejects it as a feature. Clustering rejects it as an input.</li>
+    <li><code>dispatch_attention</code> is the classification target only. Clustering rejects it as an input. A value other than 0 or 1 fails the data check.</li>
+    <li><code>src/regression.py</code> does not import scikit-learn and does not call <code>LinearRegression</code>. The weight update is batch gradient descent in NumPy.</li>
+  </ul>
+
+  <h2>Scaler checks</h2>
+  <ul>
+    <li>Regression and classification fit the feature mean and scale on the training rows only. The tests compare that mean with the training slice and with the full table.</li>
+    <li>Clustering is unsupervised, so its scaler is fit on every row that is being clustered. Those rows are still input measures only.</li>
+    <li>The recorded seed in each metrics builder is 42. Repeating a fit with the same seed repeats the regression weights, the classifier coefficients, and the cluster labels.</li>
+  </ul>
+  <div class="footer"><span>TEST_LOG · AI-G03 · Member 4</span><span>1 of 3</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 2 · Tests that passed</p>
+  <h1>Each check by name</h1>
+  <div class="cols">
+    <div>
+      <h2>Data pipeline</h2>
+      <ul>
+        <li>test_feature_matrix_excludes_identifier_and_targets</li>
+        <li>test_invalid_dispatch_label_is_rejected</li>
+        <li>test_missing_and_duplicate_values_are_reported</li>
+        <li>test_report_json_contains_descriptive_statistics</li>
+        <li>test_sha256_matches_raw_file_bytes</li>
+        <li>test_unexpected_column_is_rejected</li>
+      </ul>
+      <h2>Regression</h2>
+      <ul>
+        <li>test_analytic_gradient_matches_a_numerical_check</li>
+        <li>test_bad_learning_rate_is_rejected</li>
+        <li>test_loss_falls_and_test_metrics_are_finite</li>
+        <li>test_module_does_not_call_a_library_regressor</li>
+        <li>test_outputs_include_seed_metrics_and_loss_plot</li>
+        <li>test_same_seed_repeats_the_weights</li>
+        <li>test_scaler_uses_training_rows_only</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Classification</h2>
+      <ul>
+        <li>test_outputs_include_seed_metrics_and_confusion_matrix</li>
+        <li>test_same_seed_repeats_the_coefficients</li>
+        <li>test_scaler_uses_training_rows_only</li>
+        <li>test_single_class_training_is_rejected</li>
+        <li>test_split_is_stratified_and_target_is_attention</li>
+        <li>test_yield_column_is_rejected</li>
+      </ul>
+      <h2>Clustering</h2>
+      <ul>
+        <li>test_every_row_is_labeled_from_inputs_only</li>
+        <li>test_new_row_matches_the_nearest_saved_center</li>
+        <li>test_outputs_include_scores_labels_and_plot</li>
+        <li>test_same_seed_repeats_the_labels</li>
+        <li>test_scaler_uses_the_clustered_rows</li>
+        <li>test_targets_are_rejected</li>
+        <li>test_tie_keeps_the_smaller_k</li>
+      </ul>
+    </div>
+  </div>
+  <h2>Clustering rule checked here</h2>
+  <p>Scores are computed for k = 2, 3, 4, and 5. The selected k is the highest silhouette. If two scores tie, the smaller k is kept. <code>test_tie_keeps_the_smaller_k</code> locks that rule. Every input row in the synthetic table receives one label, and <code>clusters.csv</code> has one line per record id. The metrics text states that a cluster is not a verified real-world category.</p>
+  <p>The classification scores use positive class 1. The confusion matrix is ordered with labels 0 then 1. A single-class training table is rejected rather than scored.</p>
+  <div class="footer"><span>TEST_LOG · AI-G03 · Member 4</span><span>2 of 3</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 3 · Limits of this log</p>
+  <h1>What this run does not prove</h1>
+  <p>The 26 tests passed on synthetic and temporary files. The assessor’s command is a different check, and it cannot be run in this repository yet.</p>
+  <table>
+    <thead><tr><th>Assessor check</th><th>Status on 1 October 2026</th></tr></thead>
+    <tbody>
+      <tr><td>Clean install from requirements.txt</td><td>Blocked. requirements.txt is not in the project yet.</td></tr>
+      <tr><td><code>python run_all.py --data data/AI_A1_G03.csv --output artifacts/ --group AI-G03</code></td><td>Blocked. run_all.py and the lecturer CSV are not in the project yet.</td></tr>
+      <tr><td>Hidden CSV with the same columns</td><td>Not run. No issued file is available to copy the schema from.</td></tr>
+      <tr><td>predict.py with one valid record and one malformed record</td><td>Blocked. predict.py is not in the project yet.</td></tr>
+      <tr><td>Artifacts produced by the command, not written by hand</td><td>The unit tests write JSON and PNG only inside a temporary folder, then delete that folder.</td></tr>
+    </tbody>
+  </table>
+  <h2>QA note for the later full run</h2>
+  <ul>
+    <li>The fingerprint in data_report.json must be the SHA-256 of the issued file bytes, and it must match the value entered on Moodle.</li>
+    <li>Row counts, metrics, predictions, and cluster labels must change when the rows change. None of those values may be typed into the source.</li>
+    <li>Regression loss and test predictions must be finite. Classification metrics and the confusion matrix must be recomputed. Clustering must show a score for every k from 2 to 5 and a label on every input record.</li>
+    <li>A malformed predict.py record must return a clear validation error and no result JSON.</li>
+  </ul>
+  <p><strong>Member 4 evidence.</strong> Mohammed Osama Hasan owns this log and <code>src/clustering.py</code>. Export this file as <code>evidence/TEST_LOG.pdf</code>. Run the same unittest command again after run_all.py exists, and add that result to a new entry in this log.</p>
+  <div class="footer"><span>TEST_LOG · AI-G03 · Member 4</span><span>3 of 3</span></div>
+</section>
+
+</body>
+</html>

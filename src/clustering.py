@@ -6,6 +6,7 @@ Mohammed Osama Hasan (25/27014).
 actual_yield_kg and dispatch_attention are never inputs. Features are
 standardized, then k from 2 through 5 is scored with silhouette. The chosen
 labels group similar measurements. They are not a verified real-world category.
+The cross-pipeline check is recorded in evidence/TEST_LOG.pdf.
 """
 
 from __future__ import annotations
