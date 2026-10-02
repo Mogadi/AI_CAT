@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI_A1_G03_CONTRIBUTIONS</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: "Segoe UI", Calibri, sans-serif; color: #1A1A1A; font-size: 11px; line-height: 1.35; }
+  .page { width: 210mm; height: 297mm; padding: 12mm 13mm 14mm; position: relative; overflow: hidden; page-break-after: always; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 13px; margin: 8px 0 3px; color: #243B53; }
+  p { margin: 0 0 5px; }
+  .kicker { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: #243B53; font-weight: 700; margin: 0 0 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 6px; }
+  th, td { border: 1px solid #D6D1C7; padding: 3px 5px; text-align: left; vertical-align: top; font-size: 10px; }
+  th { background: #243B53; color: #fff; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9px; }
+  .card { background: #F6F3EC; border-radius: 6px; padding: 6px 8px; margin: 0 0 6px; }
+  .card h3 { margin: 0 0 2px; font-size: 12px; color: #243B53; }
+  .sign { display: flex; align-items: flex-end; gap: 18px; margin-top: 4px; min-height: 42px; }
+  .sign img { height: 38px; width: auto; }
+  .sign img.tall { height: 52px; }
+  .sign .date { font-size: 11px; padding-bottom: 4px; }
+  .footer { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; border-top: 1px solid #D6D1C7; padding-top: 3px; font-size: 9px; color: #5C574E; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <p class="kicker">INES-Ruhengeri · SWE 3513 · Assignment 1 · Signed contributions</p>
+  <h1>Contribution and accountability record</h1>
+  <p><strong>Group 03 · Group code AI-G03.</strong> Branch <code>main</code>. Repository https://github.com/Mogadi/AI_CAT</p>
+  <p>Final commit on this record: <code>f38649d1e4db4b117384e7ac2379cd699bb44cd9</code></p>
+  <p>Dataset <code>data/AI_A1_G03.csv</code>. SHA-256 <code>7125f66279f81011fafbb3b85ba1dcd6537c678de672d08516deaf6d870867f6</code></p>
+  <p>Group leader and Moodle submitter: Mohammed Osama Hasan, 25/27014.</p>
+  <p>Each person signs the page that lists their commits. A signature means they can explain those files and can make a small change to them in the live check. Confidential peer ratings are not written in this document.</p>
+
+  <h2>Requirement map</h2>
+  <table>
+    <thead><tr><th>Requirement</th><th>Owner</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td>Data pipeline and vectorization</td><td>Nuzha ZainEl-Abdeen Mohammed Ismail</td><td>src/data_pipeline.py, data_report.json</td></tr>
+      <tr><td>Staff dashboard design</td><td>Nuzha ZainEl-Abdeen Mohammed Ismail</td><td>design/AI_A1_G03_UIUX.pdf</td></tr>
+      <tr><td>NumPy regression and gradient descent</td><td>Ehab Fakhralden Mohamed Hamid</td><td>src/regression.py, notes/regression_derivation.md</td></tr>
+      <tr><td>Dispatch-attention classifier and cost of errors</td><td>Mojtaba Abdalitieef Ahmed</td><td>src/classification.py, notes/classification_error_cost.md</td></tr>
+      <tr><td>Clustering, silhouette choice, QA log</td><td>Mohammed Osama Hasan</td><td>src/clustering.py, evidence/TEST_LOG.pdf</td></tr>
+      <tr><td>Run command, requirements, README, clean run</td><td>Lazarus Simboya Ira Inyasio</td><td>run_all.py, requirements.txt, README.md, notes/clean_run.md</td></tr>
+      <tr><td>Group dataset file and generated reports in git</td><td>Feras Saifaddin Ismail Mohammed</td><td>data/AI_A1_G03.csv, artifacts/, models/</td></tr>
+    </tbody>
+  </table>
+  <p><code>predict.py</code> is not in this commit. The demonstration video is not in this commit. Those two items are still open before the final Moodle upload.</p>
+  <div class="footer"><span>AI_A1_G03_CONTRIBUTIONS · AI-G03</span><span>1 of 4</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 2 · Members 1 and 2</p>
+  <h1>Data, design, and regression</h1>
+
+  <div class="card">
+    <h3>Member 1 — Nuzha ZainEl-Abdeen Mohammed Ismail · 25/27419</h3>
+    <p>Data and UX lead. GitHub account nuzha0923-cloud.</p>
+    <p>Files: <code>src/data_pipeline.py</code>, <code>src/__init__.py</code>, <code>tests/test_data_pipeline.py</code>, <code>design/AI_A1_G03_UIUX.html</code>, <code>design/AI_A1_G03_UIUX.pdf</code>.</p>
+    <p>Commits on <code>main</code>:</p>
+    <p><code>2908aff4a18c2ef1c19b99b2afae22757802ec56</code> Add harvest dataset checks and the NumPy feature matrix.</p>
+    <p><code>18e91e4fdff3fc914734809dd9625cc0f59233c5</code> Add the HarvestLink dispatch desk design for staff decisions.</p>
+    <p>The design PDF was reprinted in <code>f38649d</code> so the cover states group code AI-G03 with no alternate group number.</p>
+    <div class="sign"><img src="signatures/nuzha.png" alt="Signature of Nuzha ZainEl-Abdeen Mohammed Ismail"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Member 2 — Ehab Fakhralden Mohamed Hamid · 25/27950</h3>
+    <p>Regression engineer. GitHub account ehabhamid42-ctrl.</p>
+    <p>Files: <code>src/regression.py</code>, <code>tests/test_regression.py</code>, <code>notes/regression_derivation.md</code>.</p>
+    <p>Commits on <code>main</code>:</p>
+    <p><code>a8c8c830e90b8845c3a36b7be7ee559bf43fc6c1</code> Add NumPy gradient descent for expected harvest weight.</p>
+    <p><code>78b3e771c42f8234d7c9c57a9a0215ede86f49a1</code> Add the gradient derivation for the harvest-weight model.</p>
+    <p>Evidence: loss history, MAE, RMSE, R-squared, and <code>artifacts/regression_loss.png</code> produced by <code>run_all.py</code>.</p>
+    <div class="sign"><img src="signatures/ehab.png" alt="Signature of Ehab Fakhralden Mohamed Hamid"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+  <div class="footer"><span>AI_A1_G03_CONTRIBUTIONS · AI-G03</span><span>2 of 4</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 3 · Members 3 and 4</p>
+  <h1>Classification and clustering</h1>
+
+  <div class="card">
+    <h3>Member 3 — Mojtaba Abdalitieef Ahmed · 25/27660</h3>
+    <p>Classification engineer. GitHub account ug2527660-afk. Email ug2527660@ines.ac.rw.</p>
+    <p>Files: <code>src/classification.py</code>, <code>tests/test_classification.py</code>, <code>notes/classification_error_cost.md</code>.</p>
+    <p>Commits on <code>main</code>:</p>
+    <p><code>9611ef923c3ecc49913799b19c0e807714458491</code> Add the dispatch-attention classifier and its evaluation scores.</p>
+    <p><code>4d6994043901a11dfeff22388615e6b6d21af66b</code> Explain which dispatch-attention error costs the cooperative more.</p>
+    <p>Evidence: accuracy, precision, recall, F1, and <code>artifacts/confusion_matrix.png</code>. The costly cell is actual 1 predicted as 0.</p>
+    <div class="sign"><img src="signatures/mojtaba.png" alt="Signature of Mojtaba Abdalitieef Ahmed"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Member 4 — Mohammed Osama Hasan · 25/27014</h3>
+    <p>Clustering and QA engineer. Group leader. GitHub account Mogadi.</p>
+    <p>Files: <code>src/clustering.py</code>, <code>tests/test_clustering.py</code>, <code>notes/qa_test_log.html</code>, <code>evidence/TEST_LOG.pdf</code>.</p>
+    <p>Commits on <code>main</code>:</p>
+    <p><code>95db5fcc58f8abbc2864ede1a2ff4c748677d923</code> Add silhouette-based clustering for the harvest input measures.</p>
+    <p><code>23a1843bfbba5dcb9fe81f4d191d8073049abab0</code> Record the cross-pipeline QA checks and what the full run still cannot prove.</p>
+    <p>The test log was updated in <code>f38649d</code> after <code>run_all.py</code> ran on <code>data/AI_A1_G03.csv</code>. Selected k is 3. A cluster is not a verified real-world category.</p>
+    <div class="sign"><img src="signatures/mohammed.png" alt="Signature of Mohammed Osama Hasan"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+  <div class="footer"><span>AI_A1_G03_CONTRIBUTIONS · AI-G03</span><span>3 of 4</span></div>
+</section>
+
+<section class="page">
+  <p class="kicker">Page 4 · Members 5 and 6</p>
+  <h1>Release and dataset record</h1>
+
+  <div class="card">
+    <h3>Member 5 — Lazarus Simboya Ira Inyasio · 25/28180</h3>
+    <p>Reproducibility and release lead. GitHub account lazarussimboya15-cpu.</p>
+    <p>Files: <code>run_all.py</code>, <code>requirements.txt</code>, <code>tests/test_run_all.py</code>, <code>README.md</code>, <code>notes/clean_run.md</code>.</p>
+    <p>Commits on <code>main</code>:</p>
+    <p><code>bf2b5cdcb41d3aa1aa66f13fe2b3742751031ac0</code> Add the command that reruns the harvest pipeline from one CSV.</p>
+    <p><code>54d14e14088e55bd5465fac135b5463bbc8f20e7</code> Document setup, the run command, and the clean virtual-environment check.</p>
+    <p><code>run_all.py</code> and <code>README.md</code> were updated in <code>f38649d</code> so the documented file is <code>data/AI_A1_G03.csv</code>.</p>
+    <div class="sign"><img src="signatures/lazarus.png" alt="Signature of Lazarus Simboya Ira Inyasio"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Feras Saifaddin Ismail Mohammed · 25/27916</h3>
+    <p>Prediction and demonstration lead. GitHub account ferassaifaddin6.</p>
+    <p>Commit on <code>main</code>:</p>
+    <p><code>f38649d1e4db4b117384e7ac2379cd699bb44cd9</code> Add the group 03 dataset and the reports produced from it.</p>
+    <p>Files in that commit: <code>data/AI_A1_G03.csv</code>, the eight files in <code>artifacts/</code>, and the three files in <code>models/</code>. The CSV follows the published nine-column schema. The reports were produced by <code>run_all.py</code>, not typed by hand.</p>
+    <p>Still open under this role: <code>predict.py</code>, and the unedited demonstration video.</p>
+    <div class="sign"><img class="tall" src="signatures/feras.png" alt="Signature of Feras Saifaddin Ismail Mohammed"><span class="date">2 / Oct / 2026</span></div>
+  </div>
+  <p>Each signature is the member’s mark from the group 03 record. The date on every line is 2 / Oct / 2026. The group leader uploads this file as <code>AI_A1_G03_CONTRIBUTIONS.pdf</code>.</p>
+  <div class="footer"><span>AI_A1_G03_CONTRIBUTIONS · AI-G03</span><span>4 of 4</span></div>
+</section>
+
+</body>
+</html>
